@@ -29,7 +29,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your plugins must be added before the following line
 call vundle#end() 	" required
@@ -49,6 +50,8 @@ let NERDTreeIgnore=['\.pyc&', '\~$'] "ignore files in NERDTree
 set laststatus=2 " Always display statusline in all windows
 set showtabline=2 " Always displays the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+let g:airline_theme='dark'
 
 " colorscheme config
 if has('gui_running')
