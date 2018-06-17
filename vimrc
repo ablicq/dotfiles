@@ -45,6 +45,11 @@ let python_hilight_all=1
 
 let NERDTreeIgnore=['\.pyc&', '\~$'] "ignore files in NERDTree
 
+" powerline config
+set laststatus=2 " Always display statusline in all windows
+set showtabline=2 " Always displays the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
 " colorscheme config
 if has('gui_running')
 	set background=dark
@@ -52,6 +57,8 @@ if has('gui_running')
 else
 	colorscheme zenburn
 endif
+
+map <F3> :NERDTreeToggle<CR>
 
 call togglebg#map("<F5>")
 
@@ -142,9 +149,6 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2
     \ set softtabstop=2
     \ set shiftwidth=2
-
-" avoid bad whitespaces
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 set encoding=utf-8
 
