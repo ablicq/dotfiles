@@ -47,10 +47,15 @@ Plugin 'tpope/vim-surround'
 Bundle 'Valloric/YouCompleteMe'
 "Plugin 'vim-syntastic/syntastic'
 
+Plugin 'chrisbra/csv.vim'
+
 " python folder and indenter
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
+
+" c plugin
+Plugin 'vim-scripts/c.vim'
 
 " themes
 Plugin 'jnurmine/Zenburn'
@@ -62,8 +67,12 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'powerline/fonts'
 
+Plugin 'wikitopian/hardmode'
+
+Plugin 'sjl/gundo.vim'
+
 " All of your plugins must be added before the following line
-call vundle#end() 	" required
+call vundle#end()	" required
 filetype plugin indent on " required
 
 " ******************************************************
@@ -87,32 +96,6 @@ set showtabline=2 " Always displays the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 let g:airline_powerline_fonts=1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
 
 let g:airline_theme='dark'
 
@@ -125,9 +108,8 @@ else
 	colorscheme palenight
 endif
 
+nnoremap <F5> :GundoToggle<CR>
 map <F3> :NERDTreeToggle<CR>
-
-call togglebg#map("<F5>")
 
 
 
@@ -197,3 +179,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set shiftwidth=2
 
 set encoding=utf-8
+
+" Make the 81st column stand out
+highlight ColorColumn ctermbg=red
+call matchadd('ColorColumn', '\%81v', 100)
