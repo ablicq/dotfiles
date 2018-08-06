@@ -69,7 +69,11 @@ Plugin 'powerline/fonts'
 
 Plugin 'wikitopian/hardmode'
 
-Plugin 'sjl/gundo.vim'
+" processing plugin
+Plugin 'sophacles/vim-processing'
+
+" for i3 config syntax highlighting
+Plugin 'mboughaba/i3config.vim'
 
 " All of your plugins must be added before the following line
 call vundle#end()	" required
@@ -99,16 +103,6 @@ let g:airline_powerline_fonts=1
 
 let g:airline_theme='dark'
 
-" colorscheme config
-if has('gui_running')
-	set background=dark
-	colorscheme solarized
-else
-	set background=dark
-	colorscheme palenight
-endif
-
-nnoremap <F5> :GundoToggle<CR>
 map <F3> :NERDTreeToggle<CR>
 
 
@@ -126,6 +120,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+set showtabline=0 "hides the top bar of vim
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -179,6 +174,8 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set shiftwidth=2
 
 set encoding=utf-8
+
+set backspace=2
 
 " Make the 81st column stand out
 highlight ColorColumn ctermbg=red
