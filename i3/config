@@ -151,12 +151,12 @@ bindsym $mod+p resize grow width 10 px or 10 ppt
 
 # color settings from ~/.Xresources file
 #		  variable name		resource	default
-set_from_resource $bg-color 		i3wm.color19 	#E6DB74
+set_from_resource $bg-color 		i3wm.color10 	#E6DB74
 set_from_resource $inactive-bg-color 	i3wm.color0 	#000000
 set_from_resource $text-color 		i3wm.color7 	#f3f4f5
-set_from_resource $inactive-text-color 	i3wm.color20 	#676E7D
+set_from_resource $inactive-text-color 	i3wm.color12 	#676E7D
 set_from_resource $urgent-bg-color 	i3wm.color1  	#E53935
-set_from_resource $indicator-color 	i3wm.color15 	#00ff00
+set_from_resource $indicator-color 	i3wm.color6 	#00ff00
 
 # window colors
 #                       border              background         text                 indicator
