@@ -44,9 +44,9 @@ font-0 = monospace:pixelsize=12;2
 font-1 = FontAwesome5Free:style=Solid:pixelsize=12:antialias=true;3
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=12:antialias=true;3
 
-modules-left = i3
+modules-left = i3 xkeyboard
 modules-center = xwindow
-modules-right = xkeyboard volume cpu battery date time powermenu
+modules-right = wlan volume cpu battery date time powermenu
 
 wm-name= i3
 
@@ -83,10 +83,10 @@ format = <label-indicator>
 ;label-layout-underline = ${colors.secondary}
 
 label-indicator = %name%
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-;label-indicator-underline = ${colors.secondary}
+label-indicator-padding = 1
+;label-indicator-margin = 1
+label-indicator-background = ${colors.background}
+label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
@@ -175,6 +175,7 @@ type = internal/xbacklight
 format = <ramp> <label>
 label = %percentage%%
 
+ramp-foreground = ${colors.foreground-alt}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
@@ -200,10 +201,10 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "  "
+format-prefix = %{A1:htop:} %{A}
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #f90000
-label = %percentage%%
+label = %{A1:htop:}%percentage%%%{A} 
 
 [module/memory]
 type = internal/memory
@@ -215,24 +216,20 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 ;format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %{A1:wicd-gtk -n:}%essid%%{A}
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
+format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected = %{A1:wicd-gtk -n:} %{A}
+label-disconnected-foreground = ${colors.secondary}
+click-left = wicd-gtk -n
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = ""
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -253,7 +250,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 6000
 
 date = %d/%m
 date-alt = "%a %d %b %Y"
@@ -269,7 +266,7 @@ label = %date%
 
 [module/time]
 type = internal/date
-interval = 1
+interval = 5
 
 time = %H:%M
 
@@ -324,7 +321,7 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 ;format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 ;format-full-underline = ${self.format-charging-underline}
 

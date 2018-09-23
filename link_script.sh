@@ -21,3 +21,12 @@ ln -sf $DOTFOLDER/i3/scripts/ $HOME/.config/i3/
 
 echo 'polybar configuration'
 ln -sf $DOTFOLDER/polybar/config $HOME/.config/polybar/config
+
+echo 'custom scripts folder'
+ln -sf $DOTFOLDER/bin $HOME
+
+echo 'dunst configuration'
+ln -sf $DOTFOLDER/dunst/dunstrc $HOME/.config/dunst/dunstrc
+
+echo 'ranger configuration'
+ln -sf $DOTFOLDER/ranger $HOME/.config/

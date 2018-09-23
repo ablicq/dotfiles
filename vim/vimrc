@@ -57,11 +57,6 @@ Plugin 'nvie/vim-flake8'
 " c plugin
 Plugin 'vim-scripts/c.vim'
 
-" themes
-Plugin 'jnurmine/Zenburn'
-Plugin 'drewtempelmeyer/palenight.vim'
-Plugin 'altercation/vim-colors-solarized'
-
 " airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -71,6 +66,9 @@ Plugin 'wikitopian/hardmode'
 
 " processing plugin
 Plugin 'sophacles/vim-processing'
+
+" for latex editing
+Plugin 'lervag/vimtex'
 
 " for i3 config syntax highlighting
 Plugin 'mboughaba/i3config.vim'
@@ -83,6 +81,8 @@ filetype plugin indent on " required
 " ***************    End of Plugins   ******************
 " ******************************************************
 
+" remapping leader
+let mapleader = ","
 
 " configuration of plugins
 let g:SimpylFold_docstring_preview=1

@@ -10,7 +10,8 @@ export DISPLAY=:0.0
 
 function launchNagBar
 {
-    i3-nagbar -m 'Battery low!' -b 'Hibernate!' 'pm-hibernate' >/dev/null 2>&1 &
+    #i3-nagbar -m 'Battery low!' -b 'Hibernate!' 'pm-hibernate' >/dev/null 2>&1 &
+    notify-send 'Battery low!' --urgency=critical >/dev/null 2>&1 &
     NAGBAR_PID=$!
 }
 

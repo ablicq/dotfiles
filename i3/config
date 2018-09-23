@@ -17,8 +17,12 @@ set $mod Mod4
 exec_always feh --bg-scale /home/aurelien/Images/pink_floyd_wp.png
 exec compton -f
 exec_always --no-startup-id "killall polybar; polybar -r default"
-exec_always xrdb ~/.Xresources
+exec_always xrdb -merge ~/.Xresources
 exec ~/.config/i3/scripts/battery_warning.sh
+exec dunst > /dev/null 2>&1 &
+
+# connect Wifi | its not necessary enable it here (polybar already does it)
+# exec wicd-gtk -n
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -41,11 +45,15 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt 
 
+# start mozilla
+bindsym $mod+n exec firefox
+bindsym $mod+Shift+n exec firefox https://www.netflix.com/browse
+
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show drun 
+bindsym $mod+d exec rofi -show drun -matching fuzzy
 
 # change focus
 bindsym $mod+j focus left
@@ -86,13 +94,14 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
+#bindsym $mod+Shift+f exec --no-startup-id i3fyra -a
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+q focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -133,8 +142,8 @@ bindsym $mod+Shift+underscore move container to workspace $workspace8
 bindsym $mod+Shift+ccedilla move container to workspace $workspace9
 bindsym $mod+Shift+agrave move container to workspace $workspace10
 
+
 # Assign applications to specific workspaces
-# Empty for now ...
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -149,14 +158,16 @@ bindsym $mod+i resize grow height 10 px or 10 ppt
 bindsym $mod+o resize shrink height 10 px or 10 ppt
 bindsym $mod+p resize grow width 10 px or 10 ppt
 
+smart_borders on
+
 # color settings from ~/.Xresources file
 #		  variable name		resource	default
-set_from_resource $bg-color 		i3wm.color10 	#E6DB74
+set_from_resource $bg-color 		i3wm.color6 	#E6DB74
 set_from_resource $inactive-bg-color 	i3wm.color0 	#000000
 set_from_resource $text-color 		i3wm.color7 	#f3f4f5
 set_from_resource $inactive-text-color 	i3wm.color12 	#676E7D
 set_from_resource $urgent-bg-color 	i3wm.color1  	#E53935
-set_from_resource $indicator-color 	i3wm.color6 	#00ff00
+set_from_resource $indicator-color 	i3wm.color10 	#00ff00
 
 # window colors
 #                       border              background         text                 indicator
@@ -164,8 +175,6 @@ client.focused          $bg-color           $bg-color          $text-color      
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $indicator-color 
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $indicator-color 
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $indicator-color 
-
-hide_edge_borders both
 
 # Allow i3blocks to display key indicators
 #bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
@@ -187,6 +196,9 @@ hide_edge_borders both
 #	}
 #}
 
+# Enable workspace back and forth
+# ie press mod+x to go from workspace x to the one you were before
+workspace_auto_back_and_forth yes
 
 # Binds mod+shift+x to lock the computer
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
@@ -210,6 +222,13 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 
-for_window [class=".*"] border pixel 2
-gaps inner 10
-smart_borders on
+for_window [class=".*"] border pixel 1
+for_window [class="Wicd-client.py"] floating enable
+for_window [class="JetBrains-Toolbox"] floating enable
+
+# for_window [class="^.*"] floating enable
+# for_window [class="^.*"] focus; exec --no-startup-id i3fyra -a
+
+# smart_gaps on
+
+# gaps inner 10
