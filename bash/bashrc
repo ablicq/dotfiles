@@ -1,122 +1,125 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#
+# ~/.bashrc
+#
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth:erasedups
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+# Custom bash prompt via kirsle.net/wizards/ps1.html
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+if [ -d "$HOME/.bin" ] ;
+	then PATH="$HOME/.bin:$PATH"
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
+#list
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias ll='ls -la'
+alias l='ls' 					
+alias l.="ls -A | egrep '^\.'"      
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+#fix obvious typo's
+alias cd..='cd ..'
+alias pdw="pwd"
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
+## Colorize the grep command output for ease of use (good for log files)##
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+#readable output
+alias df='df -h'
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+#pacman unlock
+alias unlock="sudo rm /var/lib/pacman/db.lck"
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+#free
+alias free="free -mt"
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+#continue download
+alias wget="wget -c"
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+#userlist
+alias userlist="cut -d: -f1 /etc/passwd"
 
-# some more ls aliases
-alias ll='ls -lArth'
-alias la='ls -A'
-alias l='ls -CF'
+#merge new settings
+alias merge="xrdb -merge ~/.Xresources"
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-#alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# Aliases for software managment
+# pacman or pm
+alias pacman='sudo pacman --color auto'
+alias update='sudo pacman -Syyu'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+# yay as aur helper - updates everything
+alias pksyua="yay -Syu --noconfirm"
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+#ps
+alias ps="ps auxf"
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+#grub update
+alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
-# added by Anaconda3 installer
-export PATH="/home/aurelien/anaconda3/bin:$PATH"
-export PATH=${PATH}:/android-sdk-linux/tools
-export PATH=${PATH}:/android-sdk-linux/tools
+#improve png
+alias fixpng="find . -type f -name "*.png" -exec convert {} -strip {} \;"
+
+#add new fonts
+alias fc='sudo fc-cache -fv'
+
+#get fastest mirrors in your neighborhood 
+alias mirror="sudo reflector --protocol https --latest 50 --number 20 --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirrors=mirror
+
+#mounting the folder Public for exchange between host and guest on virtualbox
+alias vbm="sudo mount -t vboxsf -o rw,uid=1000,gid=1000 Public /home/$USER/Public"
+
+#shopt
+shopt -s autocd # change to named directory
+shopt -s cdspell # autocorrects cd misspellings
+shopt -s cmdhist # save multi-line commands in history as single line
+shopt -s dotglob
+shopt -s histappend # do not overwrite history
+shopt -s expand_aliases # expand aliases
+
+#added by Anaconda3 5.3.0 installer
+## >>> conda init >>>
+## !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/aurelien/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    \eval "$__conda_setup"
+#else
+#    if [ -f "/home/aurelien/anaconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/aurelien/anaconda3/etc/profile.d/conda.sh"
+#        CONDA_CHANGEPS1=false conda activate base
+#    else
+#        \export PATH="/home/aurelien/anaconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+## <<< conda init <<<
+
+
+# Set config variables first
+GIT_PROMPT_ONLY_IN_REPO=1
+
+# GIT_PROMPT_FETCH_REMOTE_STATUS=0   # uncomment to avoid fetching remote status
+# GIT_PROMPT_IGNORE_SUBMODULES=1 # uncomment to avoid searching for changed files in submodules
+
+# GIT_PROMPT_SHOW_UPSTREAM=1 # uncomment to show upstream tracking branch
+# GIT_PROMPT_SHOW_UNTRACKED_FILES=normal # can be no, normal or all; determines counting of untracked files
+
+# GIT_PROMPT_SHOW_CHANGED_FILES_COUNT=0 # uncomment to avoid printing the number of changed files
+
+# GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
+
+# GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
+# GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
+
+# as last entry source the gitprompt script
+# GIT_PROMPT_THEME=Custom # use custom theme specified in file GIT_PROMPT_THEME_FILE (default ~/.git-prompt-colors.sh)
+# GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
+# GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
+source ~/.bash-git-prompt/gitprompt.sh

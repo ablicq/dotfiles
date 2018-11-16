@@ -1,3 +1,0 @@
-alias android-studio='~/android-studio/studio.sh' #alias for android studio
-alias processing='~/processing-3.3.7/processing' #alias for processing
-alias rm='rm --preserve-root' #secure rm command
