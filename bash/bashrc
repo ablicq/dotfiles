@@ -19,7 +19,7 @@ alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -la'
 alias l='ls' 					
-alias l.="ls -A | egrep '^\.'"      
+#alias l.="ls -A | egrep '^\.'"      
 
 #fix obvious typo's
 alias cd..='cd ..'
@@ -115,8 +115,8 @@ GIT_PROMPT_ONLY_IN_REPO=1
 
 # GIT_PROMPT_STATUS_COMMAND=gitstatus_pre-1.7.10.sh # uncomment to support Git older than 1.7.10
 
-# GIT_PROMPT_START=...    # uncomment for custom prompt start sequence
-# GIT_PROMPT_END=...      # uncomment for custom prompt end sequence
+GIT_PROMPT_START="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\[$(tput sgr0)\]"
+GIT_PROMPT_END="\[$(tput bold)\]\[$(tput setaf 7)\] \$\[$(tput sgr0)\]"
 
 # as last entry source the gitprompt script
 # GIT_PROMPT_THEME=Custom # use custom theme specified in file GIT_PROMPT_THEME_FILE (default ~/.git-prompt-colors.sh)
