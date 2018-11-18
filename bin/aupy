@@ -38,5 +38,6 @@ if [ -n $SCRIPT_FILE ]; then
 		vim $SCRIPT_FILE
 	fi
 else
+	# displays the usage if no correct filename were supplied
 	usage
 fi

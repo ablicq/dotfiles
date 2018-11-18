@@ -159,7 +159,7 @@ au BufNewFile,BufRead *.py
 	\set fileformat=unix
 
 " set indentation for some languages
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js, *.html, *.css, *.json, *.xml
     \ set tabstop=2
     \ set softtabstop=2
     \ set shiftwidth=2
