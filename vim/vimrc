@@ -63,6 +63,8 @@ Plugin 'mboughaba/i3config.vim'
 Plugin 'sjl/gundo.vim'
 
 Plugin 'tweekmonster/django-plus.vim'
+
+Plugin 'chriskempson/base16-vim'
 " All of your plugins must be added before the following line
 call vundle#end()	" required
 filetype plugin indent on " required
@@ -91,7 +93,7 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 
 let g:airline_powerline_fonts=1
 
-let g:airline_theme='onedark'
+let g:airline_theme='base16_seti'
 
 map <F3> :NERDTreeToggle<CR>
 
@@ -149,7 +151,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " enable proper PEP 8 indentation
-au BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.py, *.c, *.cpp, *.h, *.hpp
 	\set tabstop=4
 	\set softtabstop=4
 	\set shiftwidth=4

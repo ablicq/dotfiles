@@ -117,9 +117,9 @@ font-0 = Hack:size=11;0
 font-1 = fontawesome-regular:size=13:0
 font-2 = NotoMono-Regular: size=10;0
 
-modules-left = i3 
+modules-left = i3 xkeyboard 
 modules-center = xwindow
-modules-right = backlight battery date
+modules-right = battery date
 
 ;separator = |
 
@@ -1359,21 +1359,20 @@ format-background = ${colors.background}
 [module/xkeyboard]
 ;https://github.com/jaagr/polybar/wiki/Module:-xkeyboard
 type = internal/xkeyboard
-blacklist-0 = num lock
 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-format-prefix-background = ${colors.background}
-;format-prefix-underline = #3ecfb2
+format = <label-indicator>
+
+;format-prefix = " "
+;format-prefix-foreground = ${colors.foreground}
+;format-prefix-background = ${colors.background}
+;;format-prefix-underline = #3ecfb2
 format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+;format-background = ${colors.background}
 
-label-layout = %layout%
-label-layout-underline = #3ecfb2
-label-indicator-padding = 2
-label-indicator-margin = 1
+label-indicator = %name%
+label-indicator-padding = 1
 label-indicator-background = ${colors.background}
-;label-indicator-underline = ${colors.foreground}
+label-indicator-underline = ${xrdb:color5}
 
 ################################################################################
 
