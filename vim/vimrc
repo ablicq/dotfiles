@@ -65,6 +65,10 @@ Plugin 'sjl/gundo.vim'
 Plugin 'tweekmonster/django-plus.vim'
 
 Plugin 'chriskempson/base16-vim'
+
+Plugin 'SirVer/ultisnips'
+
+Plugin 'xuhdev/indent-java.vim'
 " All of your plugins must be added before the following line
 call vundle#end()	" required
 filetype plugin indent on " required
@@ -99,6 +103,15 @@ map <F3> :NERDTreeToggle<CR>
 
 nnoremap <F5> : GundoToggle<CR>
 
+let g:C_UseTool_cmake   = 'yes'
+let g:C_UseTool_doxygen = 'yes'
+let g:C_MapLeader = ','
+
+let g:UltiSnipsExpandTrigger="<c-,>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-n>"
+
+
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
@@ -125,6 +138,9 @@ set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
 set autochdir
+set autoindent
+
+set shiftwidth=4
 
 "setting the numberline
 set number relativenumber
@@ -151,7 +167,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " enable proper PEP 8 indentation
-au BufNewFile,BufRead *.py, *.c, *.cpp, *.h, *.hpp
+au BufNewFile,BufRead *.py
 	\set tabstop=4
 	\set softtabstop=4
 	\set shiftwidth=4

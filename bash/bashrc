@@ -13,6 +13,8 @@ if [ -d "$HOME/.bin" ] ;
 	then PATH="$HOME/.bin:$PATH"
 fi
 
+export PATH="$HOME/.gem/ruby/2.5.0/bin":$PATH
+
 #list
 alias ls='ls --color=auto'
 alias la='ls -a'

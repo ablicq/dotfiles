@@ -661,6 +661,8 @@ for_window [class="Variety"] floating enable
 for_window [instance="script-fu"] border normal
 for_window [instance="Variety"] floating disable
 
+for_window [instance="pamac-manager"] floating enable
+
 
 for_window [title="Copying"] floating enable
 for_window [title="Deleting"] floating enable
