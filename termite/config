@@ -31,7 +31,6 @@ urgent_on_bell = true
 #### https://terminal.sexy
 #### https://critical.ch/xterm/
 ############################################################
-
 [colors]
 # Base16 Seti UI
 # Author: 
@@ -81,4 +80,3 @@ color18 = #282a2b
 color19 = #3B758C
 color20 = #43a5d5
 color21 = #eeeeee
-

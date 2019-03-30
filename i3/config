@@ -50,9 +50,9 @@ set $mod Mod4
 #set $right semicolon
 
 #This is setup for azerty
-set $up h
+set $up k
 set $down j
-set $left k
+set $left h
 set $right l
 
 #####################################################################################################################
@@ -413,6 +413,10 @@ bindsym $mod+Shift+Return exec --no-startup-id thunar;focus
 bindsym $mod+Shift+KP_Enter exec --no-startup-id thunar;focus
 
 
+# screen locker
+bindsym $mod+Shift+x exec slimlock
+
+
 #####################################################################################################################
 #################                          screenshots                                              #################
 #####################################################################################################################
@@ -623,7 +627,7 @@ mode "$mode_gaps_outer" {
 #####################################################################################################################
 
 
-exec_always --no-startup-id feh --bg-scale ~/.config/Wall.jpg
+exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper
 
 
 #####################################################################################################################
