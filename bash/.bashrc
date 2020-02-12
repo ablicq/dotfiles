@@ -1,8 +1,17 @@
-# ~/.bashrc
+# _               _              
+#| |__   __ _ ___| |__  _ __ ___ 
+#| '_ \ / _` / __| '_ \| '__/ __|
+#| |_) | (_| \__ \ | | | | | (__ 
+#|_.__/ \__,_|___/_| |_|_|  \___|
 #
+# Bash configuration file
+# author: Aurélien Blicq
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# Import colorscheme from 'wal' asynchronously
+(cat ~/.cache/wal/sequences &)
 
 export HISTCONTROL=ignoreboth:erasedups
 
@@ -37,9 +46,6 @@ alias df='df -h'
 #pacman unlock
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 
-#free
-alias free="free -mt"
-
 #continue download
 alias wget="wget -c"
 
@@ -51,14 +57,13 @@ alias merge="xrdb -merge ~/.Xresources"
 
 # Aliases for software managment
 # pacman or pm
-alias pacman='sudo pacman --color auto'
+alias p='sudo pacman --color auto'
 alias update='sudo pacman -Syyu'
 
 # yay as aur helper - updates everything
 alias pksyua="yay -Syu --noconfirm"
 
 #ps
-alias ps="ps auxf"
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 #grub update
@@ -76,6 +81,12 @@ alias mirrors=mirror
 
 #mounting the folder Public for exchange between host and guest on virtualbox
 alias vbm="sudo mount -t vboxsf -o rw,uid=1000,gid=1000 Public /home/$USER/Public"
+
+# alias for neovim
+alias v=nvim
+
+# stupidity safeguard (needed for me)
+alias rm='rm --preserve-root'
 
 #shopt
 shopt -s autocd # change to named directory
@@ -124,3 +135,23 @@ GIT_PROMPT_END="\[$(tput bold)\]\[$(tput setaf 7)\] \$ \[$(tput sgr0)\]"
 # GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 source ~/.bash-git-prompt/gitprompt.sh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/home/aurelien/anaconda2/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/aurelien/anaconda2/etc/profile.d/conda.sh" ]; then
+#        . "/home/aurelien/anaconda2/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/aurelien/anaconda2/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH=$HOME/.gem/ruby/2.6.0/bin:$PATH
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

@@ -1,0 +1,165 @@
+!! Base16 Dracula
+!! Scheme: Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)
+
+!#define base00 #282936
+!#define base01 #3a3c4e
+!#define base02 #4d4f68
+!#define base03 #626483
+!#define base04 #62d6e8
+!#define base05 #e9e9f4
+!#define base06 #f1f2f8
+!#define base07 #f7f7fb
+!#define base08 #ea51b2
+!#define base09 #b45bcf
+!#define base0A #00f769
+!#define base0B #ebff87
+!#define base0C #a1efe4
+!#define base0D #62d6e8
+!#define base0E #b45bcf
+!#define base0F #00f769
+
+!!#define background_opacity 80
+
+!*foreground:   base05
+!#ifdef background_opacity
+!*background:   [background_opacity]base00
+!#else
+!*background:   base00
+!#endif
+!*cursorColor:  base05
+
+!*color0:       base00
+!*color1:       base08
+!*color2:       base0B
+!*color3:       base0A
+!*color4:       base0D
+!*color5:       base0E
+!*color6:       base0C
+!*color7:       base05
+
+!*color8:       base03
+!*color9:       base08
+!*color10:      base0B
+!*color11:      base0A
+!*color12:      base0D
+!*color13:      base0E
+!*color14:      base0C
+!*color15:      base07
+
+!! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+!! use 'shell' template to set these if necessary
+!*color16:      base09
+!*color17:      base0F
+!*color18:      base01
+!*color19:      base02
+!*color20:      base04
+!*color21:      base06
+
+
+! ------------------------------------------------------------------------------ 
+! rofi configuration
+! ------------------------------------------------------------------------------ 
+rofi*theme: .config/rofi/themes/seti.rasi
+rofi*lines: 12
+rofi*font: Hack 15
+rofi*show-icons: true
+rofi*width: 40
+rofi*hide-scrollbar: true
+rofi*scrollbar-width: 0
+
+
+! ------------------------------------------------------------------------------
+! URxvt standard arcolinux theme - Reload with xrdb -merge ~/.Xresources
+! ------------------------------------------------------------------------------
+
+
+
+! general settings
+URxvt*saveline:         15000
+URxvt*termName:         xterm-256color
+URxvt*urgentOnBell:     false
+URxvt*visualBell:       false
+URxvt*iso14755:         false
+URxvt*iso14755_52:      false
+URxvt*meta8:            false
+URxvt*metaSendsEscape:  true
+URxvt*iconFile:  		/usr/share/icons/Sardi-Mono/scalable/apps/terminal.svg
+
+! appearance
+URxvt*depth:            32
+!URxvt*transparent:      true
+!URxvt*shading:          30
+!URxvt*background:      rgba:0000/0000/0000/AAAA
+!URxvt*background:      [80]#404552
+!URxvt*background:       [70]#3F424A
+!URxvt*foreground:       #F8F8FF
+!URxvt*underlineColor:   #4682B4
+!URxvt*highlightColor:   #4682B4
+!URxvt*throughColor:     Blue
+!URxvt*cursorColor:      #c5c8c6
+URxvt*scrollBar:        false
+URxvt*scrollTtyOutput:  false
+URxvt*scrollWithBuffer:  true
+URxvt*scrollTtyKeypress: true
+URxvt*internalBorder:   0
+URxvt*externalBorder:   0
+!URxvt*colorIT:      	#87af5f
+!URxvt*colorBD:      	#c5c8c6
+!URxvt*colorUL:      	#87afd7
+
+
+! colors
+!URxvt*color0: #3f3f3f
+!URxvt*color1: #ac3c3c
+!URxvt*color2: #60b48a
+!URxvt*color3: #dfaf8f
+!URxvt*color4: #506070
+!URxvt*color5: #dc8cc3
+!URxvt*color6: #8cd0d3
+!URxvt*color7: #dcdccc
+!URxvt*color8: #79A9FF
+!URxvt*color9: #da6e6e
+!URxvt*color10: #c3bf9f
+!URxvt*color11: #f0dfaf
+!URxvt*color12: #94bff3
+!URxvt*color13: #ec93d3
+!URxvt*color14: #93e0e3
+!URxvt*color15: #ffffff
+
+! fonts
+URxvt*letterSpace: 	    		-2
+URxvt*font:                 	xft:Hack:regular:size=13
+URxvt*imFont:               	xft:Hack:regular:size=13
+URxvt*boldFont:             	xft:Hack:bold:size=13
+URxvt*italicFont:           	xft:Hack:italic:size=13
+URxvt*boldItalicFont:     		xft:Hack:regular:size=13
+! run :.!fc-list | grep <font-name>
+
+! perl extensions
+URxvt*perl-ext-common:  default,clipboard,url-select,keyboard-select,resize-font
+!URxvt*perl-ext-common:  default,clipboard,url-select,keyboard-select,tabbed
+
+! macros for clipboard and selection
+URxvt*copyCommand:      xclip -i -selection clipboard
+URxvt*pasteCommand:     xclip -o -selection clipboard
+URxvt*keysym.M-c:       perl:clipboard:copy
+URxvt*keysym.m-v:       perl:clipboard:paste
+URxvt*keysym.M-C-v:     perl:clipboard:paste_escaped
+URxvt*keysym.M-Escape:  perl:keyboard-select:activate
+URxvt*keysym.M-s:       perl:keyboard-select:search
+URxvt*keysym.M-u:       perl:url-select:select_next
+URxvt*resize-font.smaller:	C-Down
+URxvt*resize-font.bigger:	C-Up
+URxvt*urlLauncher:      firefox
+URxvt*underlineURLs:    true
+URxvt*urlButton:        1
+!URxvt*geometry: 		90x30
+
+! tabbed
+URxvt*tabbed.tabbar-fg: 4
+URxvt*tabbed.tabbar-bg: 16
+URxvt*tabbed.tab-fg:    15
+URxvt*tabbed.tab-bg:    4
+URxvt*buffered:         false
+URxvt*keysym.Control-Shift-C: perl:clipboard:copy
+URxvt*keysym.Control-Shift-V: perl:clipboard:paste

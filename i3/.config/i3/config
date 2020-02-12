@@ -56,6 +56,17 @@ set $left h
 set $right l
 
 #####################################################################################################################
+#################                          wallpaper                                                #################
+#####################################################################################################################
+
+
+exec_always --no-startup-id wal -R
+exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper
+#exec_always --no-startup-id mpvbg ~/.config/anim_wallpaper
+
+
+
+#####################################################################################################################
 #################                          	Color Settings			  		    #################
 #####################################################################################################################
 
@@ -362,7 +373,7 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id numlockx on
 
 # dropbox
-exec --no-startup-id dropbox start
+#exec --no-startup-id dropbox start
 
 # insync
 #exec --no-startup-id insync start
@@ -375,10 +386,12 @@ exec --no-startup-id volumeicon
 #exec --no-startup-id xfce4-clipman
 
 #Conky
-exec --no-startup-id conky -c ~/.config/conky/AUR-Nemesis.conkyrc
+#exec --no-startup-id conky -c ~/.config/conky/AUR-Nemesis.conkyrc
 
 #Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
+
+#exec_always citronbar &
 
 # custom key config
 exec --no-startup-id xmodmap ~/.Xmodmap
@@ -392,11 +405,13 @@ exec --no-startup-id xfce4-power-manager &
 # ommitted next line to get super key to bring up the menu in xfce and avoid error then in i3
 # IF xfsettingsd is activated you can not change themes
 #exec --no-startup-id xfsettingsd &
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+#exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+exec --no-startup-ip dunst
 
 #####################################################################################################################
 #################                          applications keyboard shortcuts                          #################
 #####################################################################################################################
+
 
 
 # terminal
@@ -622,12 +637,6 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-#####################################################################################################################
-#################                          wallpaper                                                #################
-#####################################################################################################################
-
-
-exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper
 
 
 #####################################################################################################################

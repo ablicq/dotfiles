@@ -1,0 +1,45 @@
+#!/bin/sh
+#              _                      _       _   
+#   __ _ _   _| |_ ___  ___  ___ _ __(_)_ __ | |_ 
+#  / _` | | | | __/ _ \/ __|/ __| '__| | '_ \| __|
+# | (_| | |_| | || (_) \__ \ (__| |  | | |_) | |_ 
+#  \__,_|\__,_|\__\___/|___/\___|_|  |_| .__/ \__|
+#                                      |_|        
+#
+# A script to automatcally create new scripts
+# author: Aurélien Blicq
+
+function usage {
+    echo Usage:
+    echo "  $0 <name>   Create a new script with the name <name>"
+    echo "  $0 -h       Print this help and exit"
+}
+
+if [ ! $# -eq 1 ]; then
+    echo "Wrong number of arguments"
+    usage
+    exit
+fi
+
+if [ $1 = -h ]; then
+    usage
+    exit
+fi
+
+scriptDir="$HOME/.bin"
+scriptFile="$scriptDir/$1"
+
+if [ -e $scriptFile ]; then
+    nvim $scriptFile
+    exit
+fi
+
+touch $scriptFile
+
+echo "#!/bin/sh" >> $scriptFile
+figlet $1 | sed 's/^/# /' >> $scriptFile
+echo "#" >> $scriptFile
+
+chmod +x $scriptFile
+
+nvim + $scriptFile

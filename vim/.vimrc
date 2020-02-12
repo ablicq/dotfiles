@@ -27,7 +27,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -43,7 +43,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 
 " c plugin
-Plugin 'vim-scripts/c.vim'
+" Plugin 'vim-scripts/c.vim'
 
 " airline
 Plugin 'vim-airline/vim-airline'
@@ -52,7 +52,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wikitopian/hardmode'
 
 " processing plugin
-Plugin 'sophacles/vim-processing'
+" Plugin 'sophacles/vim-processing'
 
 " for latex editing
 Plugin 'lervag/vimtex'
@@ -62,7 +62,7 @@ Plugin 'mboughaba/i3config.vim'
 
 Plugin 'sjl/gundo.vim'
 
-Plugin 'tweekmonster/django-plus.vim'
+" Plugin 'tweekmonster/django-plus.vim'
 
 Plugin 'chriskempson/base16-vim'
 
@@ -141,6 +141,8 @@ set autochdir
 set autoindent
 
 set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 
 "setting the numberline
 set number relativenumber

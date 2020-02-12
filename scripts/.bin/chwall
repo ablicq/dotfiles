@@ -1,0 +1,31 @@
+#!/bin/sh
+#       _                  _ _ 
+#   ___| |____      ____ _| | |
+#  / __| '_ \ \ /\ / / _` | | |
+# | (__| | | \ V  V / (_| | | |
+#  \___|_| |_|\_/\_/ \__,_|_|_|
+#
+# A script to change the wallpaper
+# author: Aurélien Blicq
+
+function usage {
+    echo "A script to change the wallpaper"
+    echo "Usage:"
+    echo "  $1 -h          Print this help"
+    echo "  $1 <image>     Define <image> as the new wallpaper"
+}
+
+if [ $# != 1 ]
+then
+    echo "Error: wrong number of arguments"
+    usage
+    exit
+fi
+
+if [ $1 = -h ]
+then
+    usage
+    exit
+fi
+
+cp $1 $HOME/.config/wallpaper
