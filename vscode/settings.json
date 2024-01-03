@@ -1,0 +1,19 @@
+{
+    "workbench.colorTheme": "Nord",
+    "editor.renderWhitespace": "trailing",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers": "relative",
+    "workbench.colorCustomizations": {
+        "editorBracketHighlight.foreground1": "#b48ead",
+        "editorBracketHighlight.foreground2": "#88c0d0",
+        "editorBracketHighlight.foreground3": "#a3be8c",
+        "editorBracketHighlight.foreground4": "#ebcb8b",
+        "editorBracketHighlight.foreground5": "#d08770",
+        "editorBracketHighlight.foreground6": "#bf616a",
+        "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000"
+    }
+}
