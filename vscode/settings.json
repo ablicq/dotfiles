@@ -15,5 +15,6 @@
         "editorBracketHighlight.foreground5": "#d08770",
         "editorBracketHighlight.foreground6": "#bf616a",
         "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000"
-    }
+    },
+    "telemetry.telemetryLevel": "off"
 }
