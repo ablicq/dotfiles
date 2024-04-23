@@ -16,5 +16,8 @@
         "editorBracketHighlight.foreground6": "#bf616a",
         "editorBracketHighlight.unexpectedBracket.foreground": "#ff0000"
     },
-    "telemetry.telemetryLevel": "off"
+    "telemetry.telemetryLevel": "off",
+    "go.toolsManagement.autoUpdate": true,
+    "editor.accessibilitySupport": "off",
+    "editor.formatOnSave": true
 }
