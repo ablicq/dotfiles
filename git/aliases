@@ -1,0 +1,17 @@
+[alias]
+	aa = add --all
+	bv = branch -vv
+	bd = branch -d
+	ba = branch -ra
+	cm = commit -m
+	ca = commit --amend
+	caa = commit -a --amend -C HEAD
+	co = checkout
+	cb = checkout -b
+	bd = branch -d
+	st = status --short --branch
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	ld = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+	un = reset --hard HEAD
+	uh = reset --hard HEAD^
